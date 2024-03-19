@@ -12,22 +12,32 @@ import org.springframework.stereotype.Repository;
 public class MerchantDao {
 	@Autowired
 	private MerchantRepository merchantRepo;
-	
+
 	public Merchant saveMerchant(Merchant merchant) {
 		return merchantRepo.save(merchant);
 	}
-	public Optional<Merchant> findMerchant(Integer id) {
+
+	public Optional<Merchant> findMerchantById(Integer id) {
 		return merchantRepo.findById(id);
 	}
-	public List<Merchant> findAll(){
-		return merchantRepo.findAll();
-	}
-	public Merchant updateMerchant(Merchant merchant) {
-		return merchantRepo.save(null);
-	}
+
 	public void deleteMerchant(Integer id) {
 		merchantRepo.deleteById(id);
 	}
-	
-	
+
+	public List<Merchant> findAllMerchant() {
+		return merchantRepo.findAll();
+	}
+
+	public List<Merchant> findMerchantByName(String name) {
+		return merchantRepo.findByName(name);
+	}
+
+	public Merchant findMerchantByPhone(Long phone) {
+		return merchantRepo.findByPhone(phone);
+	}
+
+	public Merchant findMerchantByPhoneAndPassword(Long phone, String password) {
+		return merchantRepo.findByPhoneAndPassword(phone, password);
+	}
 }
